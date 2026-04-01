@@ -5,10 +5,9 @@ import Proyectos from './Proyectos.jsx'
 import Contactos from './Contactos.jsx'
 import '../App.css'
 
-
 function Gestor() {
   return (
-    <div>
+    <div className="scroll-smooth">
       <Navegacion />
       <Presentacion />
       <Sobre />
