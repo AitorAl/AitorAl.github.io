@@ -1,12 +1,11 @@
 
 
 function Sobre() {
-
-    return (
-        <div>a</div>
-
-    )
-
+  return (
+    <section id="sobre">
+      <h1>Sobre mí</h1>
+    </section>
+  )
 }
 
 export default Sobre

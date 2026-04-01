@@ -1,12 +1,12 @@
 
 
+// components/Presentacion.jsx
 function Presentacion() {
-
-    return (
-        <div>a</div>
-
-    )
-
+  return (
+    <section id="presentacion">
+      <h1>Presentación</h1>
+    </section>
+  )
 }
 
 export default Presentacion

@@ -1,16 +1,16 @@
 
-
 function Navegacion() {
-
-    return (
-        <div>
-            <span>H</span>
-            <button>Presentacion</button>
-            <button>Sobre Mi</button>
-            <button>Proyectos</button>
-            <button>Contactos</button>
-        </div>
-    )
+  return (
+    <nav>
+      <span>Aitor</span>
+      <div>
+        <a href="#presentacion">Presentación</a>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contactos">Contacto</a>
+      </div>
+    </nav>
+  )
 }
 
 export default Navegacion

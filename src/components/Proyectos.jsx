@@ -1,12 +1,11 @@
 
 
 function Proyectos() {
-
-    return (
-        <div>a</div>
-
-    )
-
+  return (
+    <section id="proyectos">
+      <h1>Proyectos</h1>
+    </section>
+  )
 }
 
-export default Proyectos()
+export default Proyectos

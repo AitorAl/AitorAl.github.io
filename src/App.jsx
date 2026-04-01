@@ -7,13 +7,7 @@ import './App.css'
 import Gestor from './components/Gestor.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-    <Gestor></Gestor>
-    </>
-  )
+  return <Gestor />
 }
 
 export default App
