@@ -7,7 +7,7 @@ import '../App.css'
 
 function Gestor() {
   return (
-    <div className="scroll-smooth">
+    <div className="scroll-smooth bg-white dark:bg-gray-900 text-black dark:text-white">
       <Navegacion />
       <Presentacion />
       <Sobre />
