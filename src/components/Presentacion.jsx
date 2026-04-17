@@ -12,16 +12,16 @@ function Presentacion() {
           Aitor Álvarez Cuenca
         </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
-           breve descripción
+           Soy estudiante de 4º año de Ingeniería Informática
           </p>
         </div>
 
         <div className="flex-1">
-          <div className="w-full h-64 md:h-80 bg-gray-300 dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg">
+          <div className="w-full h-64 md:h-80 bg-gray-400 dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg">
             <img
-              src="/tu-imagen.jpg"
+              src="/foto4.jpg"
               alt="Imagen de presentación"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>

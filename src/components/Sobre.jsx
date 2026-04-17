@@ -18,7 +18,7 @@ function Sobre() {
 
         <div className="space-y-6">
           
-          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-2xl shadow">
+          <div className="bg-gray-300 dark:bg-gray-800 p-6 rounded-2xl shadow">
           <h2 className="text-2xl font-semibold mb-3 text-black dark:text-white">
             Skills
           </h2>
@@ -28,11 +28,12 @@ function Sobre() {
               <li className="bg-black text-white px-3 py-1 rounded-full text-sm">Tailwind</li>
               <li className="bg-black text-white px-3 py-1 rounded-full text-sm">Node.js</li>
               <li className="bg-black text-white px-3 py-1 rounded-full text-sm">Visual Studio Code</li>
+              <li className="bg-black text-white px-3 py-1 rounded-full text-sm">PostgreSQL</li>
             </ul>
           </div>
 
           {/* Formación */}
-          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-2xl shadow">
+          <div className="bg-gray-300 dark:bg-gray-800 p-6 rounded-2xl shadow">
             <h2 className="text-2xl font-semibold mb-3">Formación</h2>
             <p className="text-gray-600 dark:text-gray-300">
               Grado en Ingeniería Informática de Gestión y Sistemas de Información

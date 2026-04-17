@@ -87,39 +87,45 @@ function Proyectos() {
         ))}
       </div>
 
-      {selectedRepo && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl max-w-lg w-full">
-            <h2 className="text-2xl font-bold mb-2">{selectedRepo.name}</h2>
+{selectedRepo && (
+  <div
+    onClick={() => setSelectedRepo(null)}
+    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="bg-white dark:bg-gray-900 p-6 rounded-2xl max-w-lg w-full"
+    >
+      <h2 className="text-2xl font-bold mb-2">{selectedRepo.name}</h2>
 
-            <p className="mb-2">
-              {selectedRepo.description || "Sin descripción"}
-            </p>
+      <p className="mb-2">
+        {selectedRepo.description || "Sin descripción"}
+      </p>
 
-            <p className="mb-4 text-sm text-gray-500">
-              Tecnología: {selectedRepo.language || "No especificada"}
-            </p>
+      <p className="mb-4 text-sm text-gray-500">
+        Tecnología: {selectedRepo.language || "No especificada"}
+      </p>
 
-            {!selectedRepo.private && (
-              <a
-                href={selectedRepo.html_url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-500 underline"
-              >
-                Ver repositorio
-              </a>
-            )}
-
-            <button
-              onClick={() => setSelectedRepo(null)}
-              className="mt-4 block bg-black text-white px-4 py-2 rounded-lg"
-            >
-              Cerrar
-            </button>
-          </div>
-        </div>
+      {!selectedRepo.private && (
+        <a
+          href={selectedRepo.html_url}
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-500 underline"
+        >
+          Ver repositorio
+        </a>
       )}
+
+      <button
+        onClick={() => setSelectedRepo(null)}
+        className="mt-4 block bg-black text-white px-4 py-2 rounded-lg"
+      >
+        Cerrar
+      </button>
+    </div>
+  </div>
+)}
     </section>
   );
 }

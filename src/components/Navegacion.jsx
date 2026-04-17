@@ -36,7 +36,6 @@ function Navegacion() {
 
   return (
     <nav className="fixed top-0 w-full bg-gray-100 dark:bg-gray-900 text-black dark:text-white flex items-center px-6 py-2 z-50 shadow-lg">      
-      <span className="font-bold text-xl mr-10">Aitor</span>
 
       <div className="hidden md:flex gap-4 items-center">
         <a href="#presentacion" className={linkClass("presentacion")}>
