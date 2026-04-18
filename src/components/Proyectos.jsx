@@ -13,30 +13,41 @@ function Proyectos() {
       .then((data) => {
         setRepos(data);
         setFiltered(data);
-    });
+      });
   }, []);
 
+  const filteredByType =
+    selectedType === "Todos"
+      ? repos
+      : repos.filter((repo) =>
+          selectedType === "private" ? repo.private : !repo.private
+        );
+
+  const technologies = [
+    "Todos",
+    ...new Set(
+      filteredByType.map((repo) => repo.language).filter(Boolean)
+    ),
+  ];
+
   useEffect(() => {
-    let result = repos;
+    let result = filteredByType;
 
     if (selectedTech !== "Todos") {
       result = result.filter((repo) => repo.language === selectedTech);
     }
 
-
-    if (selectedType !== "Todos") {
-      result = result.filter((repo) =>
-        selectedType === "private" ? repo.private : !repo.private
-      );
-    }
-
     setFiltered(result);
   }, [selectedTech, selectedType, repos]);
 
-  const technologies = [
-    "Todos",
-    ...new Set(repos.map((repo) => repo.language).filter(Boolean)),
-  ];
+  useEffect(() => {
+    if (
+      selectedTech !== "Todos" &&
+      !filteredByType.some((repo) => repo.language === selectedTech)
+    ) {
+      setSelectedTech("Todos");
+    }
+  }, [selectedType, repos]);
 
   return (
     <section
@@ -45,7 +56,7 @@ function Proyectos() {
     >
       <h1 className="text-3xl md:text-5xl font-bold mb-8">Proyectos</h1>
 
-      <div className="flex gap-4 flex-wrap mb-8">
+      <div className="flex gap-4 flex-wrap mb-6 items-center">
         <select
           value={selectedTech}
           onChange={(e) => setSelectedTech(e.target.value)}
@@ -67,7 +78,21 @@ function Proyectos() {
           <option value="public">Públicos</option>
           <option value="private">Privados</option>
         </select>
+
+        <button
+          onClick={() => {
+            setSelectedTech("Todos");
+            setSelectedType("Todos");
+          }}
+          className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+        >
+          Limpiar
+        </button>
       </div>
+
+      <p className="mb-6 text-sm text-gray-500">
+        {filtered.length} proyectos encontrados
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((repo) => (
@@ -87,45 +112,48 @@ function Proyectos() {
         ))}
       </div>
 
-{selectedRepo && (
-  <div
-    onClick={() => setSelectedRepo(null)}
-    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
-  >
-    <div
-      onClick={(e) => e.stopPropagation()}
-      className="bg-white dark:bg-gray-900 p-6 rounded-2xl max-w-lg w-full"
-    >
-      <h2 className="text-2xl font-bold mb-2">{selectedRepo.name}</h2>
-
-      <p className="mb-2">
-        {selectedRepo.description || "Sin descripción"}
-      </p>
-
-      <p className="mb-4 text-sm text-gray-500">
-        Tecnología: {selectedRepo.language || "No especificada"}
-      </p>
-
-      {!selectedRepo.private && (
-        <a
-          href={selectedRepo.html_url}
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-500 underline"
+      {selectedRepo && (
+        <div
+          onClick={() => setSelectedRepo(null)}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
         >
-          Ver repositorio
-        </a>
-      )}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white dark:bg-gray-900 p-6 rounded-2xl max-w-lg w-full"
+          >
+            <h2 className="text-2xl font-bold mb-2">
+              {selectedRepo.name}
+            </h2>
 
-      <button
-        onClick={() => setSelectedRepo(null)}
-        className="mt-4 block bg-black text-white px-4 py-2 rounded-lg"
-      >
-        Cerrar
-      </button>
-    </div>
-  </div>
-)}
+            <p className="mb-2">
+              {selectedRepo.description || "Sin descripción"}
+            </p>
+
+            <p className="mb-4 text-sm text-gray-500">
+              Tecnología:{" "}
+              {selectedRepo.language || "No especificada"}
+            </p>
+
+            {!selectedRepo.private && (
+              <a
+                href={selectedRepo.html_url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-500 underline"
+              >
+                Ver repositorio
+              </a>
+            )}
+
+            <button
+              onClick={() => setSelectedRepo(null)}
+              className="mt-4 block bg-black text-white px-4 py-2 rounded-lg"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
